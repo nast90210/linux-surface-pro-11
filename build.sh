@@ -155,11 +155,12 @@ function arch_setup {
 		# This process will prevent unmounting after exiting the chroot if it's left dangling
 		killall -wv gpg-agent
 
-		# Add xfce
+		# Add gnome
 		pacman -Syu
-		pacman -S --noconfirm xfce4 xfce4-goodies
-		pacman -S --noconfirm lightdm lightdm-gtk-greeter
-		systemctl enable lightdm
+		pacman -S --noconfirm wayland wayland-protocols libinput
+		pacman -S --noconfirm gnome
+		pacman -S --noconfirm gdm
+		systemctl enable gdm
 	EOF
 }
 
