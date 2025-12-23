@@ -7,14 +7,14 @@ DISK_IMAGE_NAME=arch-linux-arm-sp11.img
 DISK_IMAGE_SIZE_MB=10000
 
 KERNEL_GIT_REPO=https://github.com/dwhinham/kernel-surface-pro-11
-KERNEL_GIT_BRANCH=x1e80100-6.18-rc7-sp11
-KERNEL_BASE_CONFIG_URL=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-aarch64/config
+KERNEL_GIT_BRANCH=x1e80100-6.19-rc1-sp11
+#KERNEL_BASE_CONFIG_URL=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-aarch64/config
 # If "rc" in the branch name then take the config from the ALARM -rc package
-#if [[ $KERNEL_GIT_BRANCH == *rc* ]]; then
-#	KERNEL_BASE_CONFIG_URL=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-aarch64-rc/config
-#else
-#	KERNEL_BASE_CONFIG_URL=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-aarch64/config
-#fi
+if [[ $KERNEL_GIT_BRANCH == *rc* ]]; then
+	KERNEL_BASE_CONFIG_URL=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-aarch64-rc/config
+else
+	KERNEL_BASE_CONFIG_URL=https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-aarch64/config
+fi
 
 function check_root {
 	if [ "$EUID" -ne 0 ]; then
